@@ -1,0 +1,184 @@
+@font-face {
+  font-family: kidpixies;
+  src: url(./KidpixiesRegular-p0Z1.ttf);
+}
+
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+  padding: 0;
+  margin: 0;
+  background-image: linear-gradient(45deg, #6e53ce,#00972d, #db2727, #a8be26,#6e53ce);
+  color: white;
+  font-family: "kidpixies", monospace;
+  overflow: hidden;
+}
+.main-container{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.heading-container{
+    min-height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.heading-container img{
+  height: 150px;
+}
+
+span {
+  text-align: center;
+  font-size: 50px;
+  color: white;
+  text-shadow: 2px 2px 2px #000;
+  
+}
+
+.actions {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.actions button {
+    padding: 8px 16px;
+    height: 100%;
+    width: 33%;
+    font-family: "kidpixies", monospace;
+    font-size: 30px;
+    border-radius: 10px;
+    background-image: linear-gradient(#27ae60, #00682b, #27ae60);
+    color: white;
+    justify-self: center;
+    box-shadow: 2px 2px 5px #000;
+}
+.actions button:hover{
+  background-image: linear-gradient(#1b7c44, #01411b, #1b7c44);
+}
+.grid-container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  grid-gap: 16px;
+  grid-template-columns: repeat(6, calc(100% / 9));
+  grid-template-rows: repeat(3, calc(100vh / 5 ));
+}
+
+.card {
+  height: 100%;
+  width: 100%;
+  max-width: 140px;
+  min-width: 70px;
+  max-height: calc(140px / 2 * 3);
+  border-radius: 10px;
+  background-color: white;
+  position: relative;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  perspective: 800px;
+  transition: all 0.4s ease-in-out;
+}
+
+.front-image {
+  width: 100%;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+.front, .back {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    position: absolute;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    box-shadow: 3px 3px 5px black;
+}
+
+.card .front {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(180deg);
+}
+
+.card .back {
+  background-image: url('./assets/SQUISH-MEMORY.png');
+  background-position: center center;
+  background-size: 30%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+span{
+  font-size: 40px;
+  width: 33%;
+}
+
+.credits{
+  font-size: 30px;
+}
+
+
+@media (max-width: 600px) {
+  span{
+    font-size: 30px;
+  }
+  .credits{
+    font-size: 20px;
+  }
+}
+
+@media (max-height: 700px) and (min-width: 850px) {
+  .front-image{height: 100%;}
+}
+
+@media (max-height: 550px) and (min-width: 600px){
+  .heading-container {min-height: 50px;}
+}
+
+@media (max-width: 500px),(max-height: 650px){
+  .heading-container img{height: 70px;}
+  span{
+    font-size: 25px;
+  }
+  .credits{
+    font-size: 15px;
+  }
+  .actions button{
+    font-size: 25px;
+  }
+
+  .card {
+    max-width: 140px;
+    min-width: 50px;
+    max-height: 120px;
+  }
+}
+
+
+/* For particle system */
+.particle{
+  /*SIZE IS SET BY PARTICLE CLASS*/
+  display: block;
+  position: absolute;
+  background-image: url(./assets/Star.png);
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  z-index: 3;
+}

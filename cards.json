@@ -1,0 +1,38 @@
+[
+    {
+        "image": "./assets/chick.png",
+        "name": "chick"
+    },
+    {
+        "image": "./assets/coffee.png",
+        "name": "coffee"
+    },
+    {
+        "image": "./assets/icecream.png",
+        "name": "icecream"
+    },
+    {
+        "image": "./assets/lobster.png",
+        "name": "lobster"
+    },
+    {
+        "image": "./assets/pineapple.png",
+        "name": "pineapple"
+    },
+    {
+        "image": "./assets/pizza.png",
+        "name": "pizza"
+    },
+    {
+        "image": "./assets/reindeer.png",
+        "name": "reindeer"
+    },
+    {
+        "image": "./assets/shark.png",
+        "name": "shark"
+    },
+    {
+        "image": "./assets/squirrel.png",
+        "name": "squirrel"
+    }
+]

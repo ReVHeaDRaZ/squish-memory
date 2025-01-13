@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Squish Memory is a memory card game with Squishmallow style card art.">
+    <meta name="keywords" content="memory card game squish">
+    
+    <link rel="icon" type="image/png" href="./favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Squish Memory" />
+    <link rel="manifest" href="./site.webmanifest" />
+    
+    <title>Squish Memory</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="heading-container">
+        <img src="./assets/SQUISH-MEMORY.png" alt="squish memory">
+      </div>
+      <div class="grid-container"></div>
+      <div class="actions">
+        <span>Misses: <span class="misses"></span></span>
+        <button onclick="restart()">Restart</button>
+        <span class="credits">All card art by<br>Wesley Owens</span>
+      </div>
+    </div>
+
+    <script src="elementParticles.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
