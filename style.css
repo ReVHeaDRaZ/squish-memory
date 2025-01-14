@@ -12,6 +12,7 @@ body {
   color: white;
   font-family: "kidpixies", monospace;
   overflow: hidden;
+  user-select: none;
 }
 .main-container{
   display: flex;

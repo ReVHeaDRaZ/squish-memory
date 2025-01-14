@@ -6,6 +6,7 @@ let misses = 0;
 let matches = 0;
 let flipSound = new Audio("./assets/cardFlip.mp3");
 let matchSound = new Audio("./assets/match.mp3");
+let winSound = new Audio("./assets/win.mp3");
 
 document.querySelector(".misses").textContent = misses;
 
@@ -13,7 +14,7 @@ fetch("./cards.json")
   .then((res) => res.json())
   .then((data) => {
     cards = [...data, ...data];
-    //shuffleCards();
+    shuffleCards();
     generateCards();
   });
 
@@ -68,6 +69,9 @@ function flipCard() {
   checkForMatch();
   if(matches==cards.length/2){
     document.getElementById("win-container").style.display = "block";
+    let winBox = document.getElementById("win-box");
+    spawnParticlesInContainer(particleArray,winBox,'particle', 60, 20, 100,false,4);
+    winSound.play();
   }
 }
 
