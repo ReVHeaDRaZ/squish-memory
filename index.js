@@ -1,14 +1,18 @@
 const gridContainer = document.querySelector(".grid-container");
+const flipSound = new Audio("./assets/cardFlip.mp3");
+const matchSound = new Audio("./assets/match.mp3");
+const winSound = new Audio("./assets/win.mp3");
+
 let cards = [];
 let firstCard, secondCard;
 let lockBoard = false;
 let misses = 0;
 let matches = 0;
-let flipSound = new Audio("./assets/cardFlip.mp3");
-let matchSound = new Audio("./assets/match.mp3");
-let winSound = new Audio("./assets/win.mp3");
+let bestScore = 99;
+
 
 document.querySelector(".misses").textContent = misses;
+document.getElementById("best").textContent = bestScore;
 
 fetch("./cards.json")
   .then((res) => res.json())
@@ -67,8 +71,14 @@ function flipCard() {
   lockBoard = true;
 
   checkForMatch();
+
+  // If Board finished
   if(matches==cards.length/2){
-    document.getElementById("win-container").style.display = "block";
+    if(bestScore > misses)
+      bestScore = misses;
+    document.getElementById("win-container").style.display = "flex";
+    document.getElementById("final-misses").textContent = misses;
+    document.getElementById("final-best").textContent = bestScore;
     let winBox = document.getElementById("win-box");
     spawnParticlesInContainer(particleArray,winBox,'particle', 60, 20, 100,false,4);
     winSound.play();
@@ -92,6 +102,9 @@ function checkForMatch() {
 function disableCards() {
   firstCard.removeEventListener("click", flipCard);
   secondCard.removeEventListener("click", flipCard);
+
+  firstCard.classList.add("matched");
+  secondCard.classList.add("matched");
 
   resetBoard();
 }
@@ -119,6 +132,7 @@ function restart() {
   misses = 0;
   matches = 0;
   document.querySelector(".misses").textContent = misses;
+  document.getElementById("best").textContent = bestScore;
   gridContainer.innerHTML = "";
   generateCards();
   document.getElementById("win-container").style.display = "none";

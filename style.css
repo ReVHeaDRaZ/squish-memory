@@ -32,9 +32,15 @@ body {
 .heading-container img{
   height: 150px;
 }
-
+.absolute-top-right{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 #win-container{
-  display:none;
+  display: none;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
   position: absolute;
   padding: 0px;
@@ -49,17 +55,15 @@ body {
   backdrop-filter: blur(5px);
 }
 #win-box{
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   box-sizing: border-box;
   position: relative;
-  padding: 50px;
-  width: 50%;
-  height: 50%;
-  top: 0px;
-  translate: 50% 50%;
+  padding: 20px;
+  width: 70%;
+  height: 70%;
   background-image: linear-gradient(45deg, #6e53ce,#00972d, #db2727, #a8be26,#6e53ce);
   border: #000 1px solid;
   border-radius: 10px;
@@ -67,7 +71,10 @@ body {
 }
 h1{
   font-size: 50px;
+  margin: 10px;
   font-weight: 10;
+  text-shadow: 2px 2px 2px #000;
+  
 }
 span {
   text-align: center;
@@ -150,6 +157,9 @@ button:hover{
 .card.flipped {
   transform: rotateY(180deg);
 }
+.card.matched {
+  box-shadow: inset 1px 1px 30px rgb(100, 200, 100), inset -1px -1px 30px rgb(100, 200, 100);
+}
 
 .front, .back {
     backface-visibility: hidden;
@@ -188,8 +198,8 @@ span{
 }
 
 
-@media (max-width: 600px) {
-  h1{ font-size: 30px; }
+@media (max-width: 690px) {
+  h1{ font-size: 35px; }
   span{ font-size: 30px; }
   .credits{ font-size: 20px; }
 }
@@ -204,7 +214,7 @@ span{
 
 @media (max-width: 500px),(max-height: 650px){
   .heading-container img{ height: 70px; }
-  h1{ font-size: 20px; }
+  h1{ font-size: 30px; }
   span{ font-size: 25px; }
   .credits{ font-size: 15px; }
   button{ font-size: 25px; }

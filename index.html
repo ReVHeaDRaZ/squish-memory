@@ -22,6 +22,7 @@
       <div class="heading-container">
         <img src="./assets/SQUISH-MEMORY.png" alt="squish memory">
       </div>
+      <span class="absolute-top-right">Best: <span id="best"></span></span>
       <div class="grid-container"></div>
       <div class="actions">
         <span>Misses: <span class="misses"></span></span>
@@ -33,7 +34,11 @@
     <div id="win-container">
       <div class="blur-box"></div>
       <div id="win-box">
-        <h1>Congratulations!<br>You're a winnner!</h1>
+        <h1>Congratulations!<br>You're a winner!</h1>
+        <span>Misses: <span id="final-misses"></span></span>
+        <br>
+        <span>Best: <span id="final-best"></span></span>
+        <br>
         <button onclick="restart()">Restart</button>
       </div>
     </div>
