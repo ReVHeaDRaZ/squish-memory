@@ -32,6 +32,42 @@ body {
   height: 150px;
 }
 
+#win-container{
+  display:none;
+  box-sizing: border-box;
+  position: absolute;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+}
+.blur-box{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+}
+#win-box{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+  padding: 50px;
+  width: 50%;
+  height: 50%;
+  top: 0px;
+  translate: 50% 50%;
+  background-image: linear-gradient(45deg, #6e53ce,#00972d, #db2727, #a8be26,#6e53ce);
+  border: #000 1px solid;
+  border-radius: 10px;
+  text-align: center;
+}
+h1{
+  font-size: 50px;
+  font-weight: 10;
+}
 span {
   text-align: center;
   font-size: 50px;
@@ -48,10 +84,8 @@ span {
     margin-top: 30px;
 }
 
-.actions button {
+button {
     padding: 8px 16px;
-    height: 100%;
-    width: 33%;
     font-family: "kidpixies", monospace;
     font-size: 30px;
     border-radius: 10px;
@@ -60,7 +94,10 @@ span {
     justify-self: center;
     box-shadow: 2px 2px 5px #000;
 }
-.actions button:hover{
+.actions button{
+  width: 33%;
+}
+button:hover{
   background-image: linear-gradient(#1b7c44, #01411b, #1b7c44);
 }
 .grid-container {
@@ -72,6 +109,22 @@ span {
   grid-gap: 16px;
   grid-template-columns: repeat(6, calc(100% / 9));
   grid-template-rows: repeat(3, calc(100vh / 5 ));
+}
+.scale-down-tosize{
+  animation: scale-down-tosize 0.4s ease-out 0s 1 normal;
+}
+@keyframes scale-down-tosize {
+  0% {
+    scale: 3;
+    opacity: 0;
+  }
+  50%{
+    opacity: 0;
+  }
+  100%{
+    scale: 1;
+    opacity: 1;
+  }
 }
 
 .card {
@@ -135,12 +188,9 @@ span{
 
 
 @media (max-width: 600px) {
-  span{
-    font-size: 30px;
-  }
-  .credits{
-    font-size: 20px;
-  }
+  h1{ font-size: 30px; }
+  span{ font-size: 30px; }
+  .credits{ font-size: 20px; }
 }
 
 @media (max-height: 700px) and (min-width: 850px) {
@@ -152,22 +202,20 @@ span{
 }
 
 @media (max-width: 500px),(max-height: 650px){
-  .heading-container img{height: 70px;}
-  span{
-    font-size: 25px;
-  }
-  .credits{
-    font-size: 15px;
-  }
-  .actions button{
-    font-size: 25px;
-  }
+  .heading-container img{ height: 70px; }
+  h1{ font-size: 20px; }
+  span{ font-size: 25px; }
+  .credits{ font-size: 15px; }
+  button{ font-size: 25px; }
 
   .card {
     max-width: 140px;
     min-width: 50px;
     max-height: 120px;
   }
+}
+@media (max-height: 390px){
+  .actions{margin: 10px;}
 }
 
 

@@ -3,6 +3,7 @@ let cards = [];
 let firstCard, secondCard;
 let lockBoard = false;
 let misses = 0;
+let matches = 0;
 let flipSound = new Audio("./assets/cardFlip.mp3");
 let matchSound = new Audio("./assets/match.mp3");
 
@@ -12,7 +13,7 @@ fetch("./cards.json")
   .then((res) => res.json())
   .then((data) => {
     cards = [...data, ...data];
-    shuffleCards();
+    //shuffleCards();
     generateCards();
   });
 
@@ -42,6 +43,10 @@ function generateCards() {
     `;
     gridContainer.appendChild(cardElement);
     cardElement.addEventListener("click", flipCard);
+
+    gridContainer.classList.remove("scale-down-tosize");
+    gridContainer.offsetWidth; // trigger reflow
+    gridContainer.classList.add("scale-down-tosize");
   }
 }
 
@@ -61,6 +66,9 @@ function flipCard() {
   lockBoard = true;
 
   checkForMatch();
+  if(matches==cards.length/2){
+    document.getElementById("win-container").style.display = "block";
+  }
 }
 
 function checkForMatch() {
@@ -71,6 +79,7 @@ function checkForMatch() {
     spawnParticlesInContainer(particleArray,secondCard,'particle', 30, 10, 80,false,4);
     disableCards();
     matchSound.play();
+    matches++;
   }else{
     unflipCards();
   } 
@@ -104,7 +113,9 @@ function restart() {
   resetBoard();
   shuffleCards();
   misses = 0;
+  matches = 0;
   document.querySelector(".misses").textContent = misses;
   gridContainer.innerHTML = "";
   generateCards();
+  document.getElementById("win-container").style.display = "none";
 }
