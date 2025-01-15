@@ -39,7 +39,10 @@
       <div class="grid-container"></div>
       <div class="actions">
         <span>Misses: <span class="misses"></span></span>
-        <button onclick="restart()">Restart</button>
+        <div class="button-container">
+          <button onclick="restart()">Restart</button>
+          <button onclick="backToMain()">MainMenu</button>
+        </div>
         <span class="credits">All card art by<br>Wesley Owens</span>
       </div>
     </div>
@@ -54,7 +57,10 @@
         <br>
         <span>Best: <span id="final-best"></span></span>
         <br>
-        <button onclick="restart()">Restart</button>
+        <div style="display: flex;">
+          <button onclick="restart()">Restart</button>
+          <button onclick="backToMain()">MainMenu</button>
+        </div>
       </div>
     </div>
 

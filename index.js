@@ -174,3 +174,7 @@ function difficultyToText(){
   }
   return text;
 }
+
+function backToMain(){
+  location.reload();
+}

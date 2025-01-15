@@ -115,9 +115,11 @@ span {
     margin-bottom: 30px;
     margin-top: 30px;
 }
-
+.button-container{
+  width: 50%;
+}
 button {
-    padding: 8px 16px;
+    padding: 6px 12px;
     font-family: "kidpixies", monospace;
     font-size: 30px;
     border-radius: 10px;
@@ -126,7 +128,7 @@ button {
     justify-self: center;
     box-shadow: 2px 2px 5px #000;
 }
-.actions button{ width: 33%; }
+/* .actions button{ width: 45%; } */
 button:hover{ background-image: linear-gradient(#1b7c44, #01411b, #1b7c44); }
 
 .grid-container {
