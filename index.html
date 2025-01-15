@@ -17,11 +17,24 @@
     <title>Squish Memory</title>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
+
   <body>
-    <div class="main-container">
+    <div id="menu-container" class="fade-in">
+      <img src="./assets/SQUISH-MEMORY.png" alt="squish memory">
+      <span>- Choose a difficulty -</span>
+      <br>
+      <div>
+        <button onclick="start(0)">Easy</button>
+        <button onclick="start(1)">Medium</button>
+        <button onclick="start(2)">Hard</button>
+      </div>
+    </div>
+    
+    <div id="main-container">
       <div class="heading-container">
         <img src="./assets/SQUISH-MEMORY.png" alt="squish memory">
       </div>
+      <span class="absolute-top-left"><span id="difficulty"></span></span>
       <span class="absolute-top-right">Best: <span id="best"></span></span>
       <div class="grid-container"></div>
       <div class="actions">
@@ -35,6 +48,8 @@
       <div class="blur-box"></div>
       <div id="win-box">
         <h1>Congratulations!<br>You're a winner!</h1>
+        <span id="final-difficulty"></span>
+        <br>
         <span>Misses: <span id="final-misses"></span></span>
         <br>
         <span>Best: <span id="final-best"></span></span>

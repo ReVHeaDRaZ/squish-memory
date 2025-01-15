@@ -9,18 +9,39 @@ let lockBoard = false;
 let misses = 0;
 let matches = 0;
 let bestScore = 99;
-
+let difficultyLevel = 0; // Easy-0, Medium-1, Hard-2
 
 document.querySelector(".misses").textContent = misses;
 document.getElementById("best").textContent = bestScore;
 
-fetch("./cards.json")
-  .then((res) => res.json())
-  .then((data) => {
-    cards = [...data, ...data];
-    shuffleCards();
-    generateCards();
+function delay(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
+function start(difficulty){
+  difficultyLevel = difficulty;
+  let menu = document.getElementById("menu-container");
+  menu.classList.remove("fade-in");
+  menu.offsetWidth; // trigger reflow
+  menu.classList.add("fade-out");
+  
+  delay(400).then(() => {
+    fetch("./cards.json")
+    .then((res) => res.json())
+    .then((data) => {
+      if(difficultyLevel==0)
+        data.splice(Math.floor(data.length/2 - 1));
+      if(difficultyLevel==1)
+        data.splice(Math.floor(data.length*0.8 - 1));
+      
+      cards = [...data, ...data];
+      shuffleCards();
+      generateCards();
+      menu.style.display = "none";
+      document.getElementById("main-container").style.display = "flex";
+      document.getElementById("difficulty").textContent = difficultyToText(difficultyLevel);
+    });
   });
+}
 
 function shuffleCards() {
   let currentIndex = cards.length,
@@ -77,6 +98,7 @@ function flipCard() {
     if(bestScore > misses)
       bestScore = misses;
     document.getElementById("win-container").style.display = "flex";
+    document.getElementById("final-difficulty").textContent = difficultyToText(difficultyLevel);
     document.getElementById("final-misses").textContent = misses;
     document.getElementById("final-best").textContent = bestScore;
     let winBox = document.getElementById("win-box");
@@ -136,4 +158,19 @@ function restart() {
   gridContainer.innerHTML = "";
   generateCards();
   document.getElementById("win-container").style.display = "none";
+}
+
+function difficultyToText(){
+  let text = "";
+  switch(difficultyLevel){
+    case 0:
+      text = "EASY";
+      break;
+    case 1:
+      text = "MEDIUM";
+      break;
+    default:
+      text = "HARD";
+  }
+  return text;
 }

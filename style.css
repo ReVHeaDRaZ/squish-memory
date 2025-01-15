@@ -13,9 +13,10 @@ body {
   font-family: "kidpixies", monospace;
   overflow: hidden;
   user-select: none;
+  text-align: center;
 }
-.main-container{
-  display: flex;
+#main-container{
+  display: none;
   width: 100%;
   height: 100%;
   flex-direction: column;
@@ -37,7 +38,12 @@ body {
   top: 0;
   right: 0;
 }
-#win-container{
+.absolute-top-left{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#win-container, #menu-container{
   display: none;
   align-items: center;
   justify-content: center;
@@ -48,6 +54,25 @@ body {
   height: 100%;
   top: 0px;
 }
+#menu-container{
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(45deg, #6e53ce,#00972d, #db2727, #a8be26,#6e53ce);
+  z-index: 10;
+}
+.fade-in{ animation: fade-in 0.4s ease-in 0s 1 forwards; }
+.fade-out { animation: fade-out 0.4s ease-in 0s 1 forwards; }
+@keyframes fade-in {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+@keyframes fade-out {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+#menu-container img{ width: 250px; }
+#menu-container span{ width: 100%; }
+
 .blur-box{
   position: absolute;
   width: 100%;
@@ -81,7 +106,6 @@ span {
   font-size: 50px;
   color: white;
   text-shadow: 2px 2px 2px #000;
-  
 }
 
 .actions {
@@ -102,12 +126,9 @@ button {
     justify-self: center;
     box-shadow: 2px 2px 5px #000;
 }
-.actions button{
-  width: 33%;
-}
-button:hover{
-  background-image: linear-gradient(#1b7c44, #01411b, #1b7c44);
-}
+.actions button{ width: 33%; }
+button:hover{ background-image: linear-gradient(#1b7c44, #01411b, #1b7c44); }
+
 .grid-container {
   display: grid;
   justify-content: center;
@@ -118,9 +139,8 @@ button:hover{
   grid-template-columns: repeat(6, calc(100% / 9));
   grid-template-rows: repeat(3, calc(100vh / 5 ));
 }
-.scale-down-tosize{
-  animation: scale-down-tosize 0.4s ease-out 0s 1 normal;
-}
+.scale-down-tosize{ animation: scale-down-tosize 0.4s ease-out 0s 1 normal; }
+
 @keyframes scale-down-tosize {
   0% {
     scale: 3;
@@ -150,16 +170,10 @@ button:hover{
   transition: all 0.4s ease-in-out;
 }
 
-.front-image {
-  width: 100%;
-}
+.front-image { width: 100%; }
 
-.card.flipped {
-  transform: rotateY(180deg);
-}
-.card.matched {
-  box-shadow: inset 1px 1px 30px rgb(100, 200, 100), inset -1px -1px 30px rgb(100, 200, 100);
-}
+.card.flipped { transform: rotateY(180deg); }
+.card.matched { box-shadow: inset 1px 1px 30px rgb(100, 200, 100), inset -1px -1px 30px rgb(100, 200, 100); }
 
 .front, .back {
     backface-visibility: hidden;
@@ -193,15 +207,14 @@ span{
   width: 33%;
 }
 
-.credits{
-  font-size: 30px;
-}
+.credits{ font-size: 30px; }
 
 
 @media (max-width: 690px) {
   h1{ font-size: 35px; }
   span{ font-size: 30px; }
   .credits{ font-size: 20px; }
+  #menu-container img{ width: 200px; }
 }
 
 @media (max-height: 700px) and (min-width: 850px) {
